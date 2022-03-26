@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <link href="favicon.ico" rel="shortcut icon">
+    <link rel="stylesheet" href="{{ url_for('static',filename='css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+    <link rel="stylesheet" href="{{ url_for('static',filename='css/myindex.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static',filename='css/cookie.css') }}">
+</head>
+
+<body>
+    <div class="popup-screen">
+        <div class="popup-box">
+            <h2>Cookie Consent</h2>
+            <p>This site uses cookies to enhance user experience</p>
+            <i class="close-btn">Allow cookies</i>
+        </div>
+    </div>
+    <video autoplay muted loop id="bg-video">
+        <source src="{{ url_for('static',filename='puppy.mp4') }}" type="video/mp4">
+    </video>
+    <div class="container">
+        <nav class="navbar navbar-expand-lg navbar-light">
+            <a class="navbar-brand" href="/">
+                Poop-Picker
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav ml-lg-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/register">Register</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/login">Login</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/dashboard">Dashboard</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </div>
+    <hr class="hr">
+    <div class="content">
+        <div class="info">
+            <h2>PooP Picker <br><span>Keep A Record!</span></h2>
+            <p>Poop Picker is an online pet fast fashion raft site; the site integrates a series of humane 
+            features such as quick login, pet log, co-parenting, multi-threaded pet planning, etc. Users 
+            can log in at any time to record and share their moments with friends and reminisce about the 
+            good times. Come and experience it!</p>
+        </div>
+    </div>
+</body>
+<script>
+const popupScreen = document.querySelector(".popup-screen");
+const popupBox = document.querySelector(".popup-box");
+const closeBtn = document.querySelector(".close-btn");
+
+window.addEventListener("load", () => {
+    setTimeout(() => {
+        popupScreen.classList.add("active");
+    }, 2000); //Popup the screen in 02 seconds after the page is loaded.
+});
+
+closeBtn.addEventListener("click", () => {
+    popupScreen.classList.remove("active"); //Close the popup screen on click the close button.
+    //Create a cookie for a day (to expire within a day) on click the close button.
+    document.cookie = "WebsiteName=testWebsite; max-age=" + 24 * 60 * 60; //1 day = 24 hours = 24*60*60
+});
+
+//Use the created cookie to hide or show the popup screen.
+const WebsiteCookie = document.cookie.indexOf("WebsiteName=");
+
+if (WebsiteCookie != -1) {
+    popupScreen.style.display = "none"; //Hide the popup screen if the cookie is not expired.
+} else {
+    popupScreen.style.display = "flex"; //Show the popup screen if the cookie is expired.
+}
+</script>
+
+</html>
+<script src="{{ url_for('static',filename='js/slim.min.js') }}"></script>
+<script src="{{ url_for('static',filename='js/bootstrap.min.js') }}"></script>

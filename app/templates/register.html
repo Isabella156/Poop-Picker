@@ -1,0 +1,66 @@
+{% extends "base.html" %}
+{% block title %}Register{% endblock %}
+{% block head %}
+{{ super() }}
+<!-- Font Icon -->
+<link href="favicon.ico" rel="shortcut icon">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/material-design-iconic-font/2.2.0/css/material-design-iconic-font.min.css">
+<link rel="stylesheet" href="{{ url_for('static',filename='css/login.css') }}">
+<link rel="stylesheet" href="{{ url_for('static',filename='css/bootstrap.min.css') }}">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+<link rel="stylesheet" href="{{ url_for('static',filename='css/myindex.css') }}">
+<script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+{% endblock %}
+{% block content %}
+{% with messages = get_flashed_messages(with_categories=True) %}
+{% if messages %}
+{% for message in messages %}
+<div class="alert alert-{{ message[0] }}">
+    {{ message[1] }}
+    <span type="button" class="close" data-dismiss="alert">&times;</span>
+</div>
+{% endfor %}
+{% endif %}
+{% endwith %}
+<div class="main">
+    <!-- Sign up form -->
+    <section class="signup">
+        <div class="form-container">
+            <div class="signup-content">
+                <div class="signup-form">
+                    <h2 class="form-title">Sign up</h2>
+                    <form method="POST" class="register-form" id="register-form">
+                        {{ form.hidden_tag() }}
+                        <div class="form-group">
+                            <label for="name"><i class="zmdi zmdi-account material-icons-name"></i></label>
+                            {{ form.username(type="text", class="input form-control pl-5", placeholder="Your username (4 ~ 15)", maxlength="15") }}
+                            <!--         <input type="text" name="name" id="name" placeholder="Your Name" maxlength="15" /> -->
+                        </div>
+                        <div class="form-group">
+                            <label for="email"><i class="zmdi zmdi-email material-icons-name"></i></label>
+                            {{ form.email(type="email", class="input form-control pl-5", placeholder="Your email (less than 50)", maxlength="50") }}
+                        </div>
+                        <div class="form-group">
+                            <label for="pass"><i class="zmdi zmdi-lock material-icons-name"></i></label>
+                            {{ form.password(type="password", class="input form-control pl-5", placeholder="Your Password (8 ~ 80)", maxlength="80") }}
+                        </div>
+                        <div class="form-group">
+                            <label for="pass"><i class="zmdi zmdi-code-setting material-icons-name"></i></label>
+                            {{ form.code(type="text", class="input form-control pl-5", placeholder="Your unique code (4 ~ 15)", maxlength="15") }}
+                        </div>
+                        <div class="form-group form-button">
+                            <button type="submit" name="signup" id="signup" class="form-submit" value="Register" />Register
+                        </div>
+                    </form>
+                </div>
+                <div class="signup-image">
+                    <figure><img src="../static/images/register.jpg" alt="sing up image"></figure>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+<script src="{{ url_for('static',filename='js/bootstrap.min.js') }}"></script>
+<script src="{{ url_for('static',filename='js/slim.min.js') }}"></script>
+{% endblock %}

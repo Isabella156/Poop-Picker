@@ -1,0 +1,61 @@
+{% extends "base.html" %}
+{% block title %}Dashboard{% endblock %}
+{% block head %}
+{{ super() }}
+<script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="{{ url_for('static',filename='css/dashboard.css') }}">
+<link rel="stylesheet" href="{{ url_for('static',filename='css/bootstrap.min.css') }}">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+<link rel="stylesheet" href="{{ url_for('static',filename='css/myindex.css') }}">
+<script src="{{ url_for('static',filename='js/all.js') }}"></script>
+{% endblock %}
+{% block content %}
+{% with messages = get_flashed_messages(with_categories=True) %}
+{% if messages %}
+{% for message in messages %}
+<div class="alert alert-{{ message[0] }}">
+    {{ message[1] }}
+    <span type="button" class="close" data-dismiss="alert">&times;</span>
+</div>
+{% endfor %}
+{% endif %}
+{% endwith %}
+<section class="about full-screen d-lg-flex justify-content-center align-items-center" id="about">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-7 col-md-12 col-12 d-flex align-items-center">
+                <div class="about-text">
+                    <h2 class="small-text">Hey {{ user.username }}, welcome to <span class="mobile-block">Poop-Picker</span></h2>
+                    <h1 class="animated animated-text">
+                        <span class="mr-2">Here is your pet:</span>
+                        {% if user.pets != []%}
+                        <article class="animated-info">
+                            {% for pet in user.pets %}
+                            <span>{{ pet.name }}</span>
+                            {% endfor %}
+                        </article>
+                        {% else %}
+                        <div class="animated-info">
+                            <span class="animated-item">No pet!</span>
+                        </div>
+                        {% endif %}
+                    </h1>
+                    <p>It's your pet,but you are it's all.</p>
+                        <p>A pet is the only thing on earth that loves you more than he loves himself.</p>
+                    <div class="custom-btn-group mt-4">
+                        <a href="/showPet" class="btn custom-btn custom-btn-bg custom-btn-link">View Pet</a>
+                        <a href="/pet" class="btn custom-btn custom-btn-bg custom-btn-link">Add Pet</a>
+                        <a href="/logout" class="btn custom-btn custom-btn-bg custom-btn-link">Log out</a>
+                        <a href="/changePassword" class="btn custom-btn custom-btn-bg custom-btn-link">Change Password</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-5 col-md-12 col-12">
+                <div class="about-image svg">
+                    <img src="../static/images/doggy.svg" class="img-fluid" alt="svg image">
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

@@ -1,0 +1,14 @@
+[2021-12-09 06:15:50,510][user.py-137][INFO][16916] - Log out user: bamboo
+[2021-12-09 06:16:12,474][user.py-73][INFO][16876] - Successfully registeration: xiefei
+[2021-12-09 06:16:17,360][user.py-137][INFO][11772] - Log out user: xiefei
+[2021-12-09 06:16:51,370][user.py-105][INFO][21272] - Successfully login: xiefei
+[2021-12-09 06:17:17,847][user.py-137][INFO][3988] - Log out user: xiefei
+[2021-12-09 06:20:44,647][user.py-105][INFO][5012] - Successfully login: bamboo
+[2021-12-09 06:25:17,680][user.py-137][INFO][23384] - Log out user: bamboo
+[2021-12-09 06:58:39,473][user.py-105][INFO][23048] - Successfully login: bamboo
+[2021-12-09 06:59:31,535][user.py-137][INFO][18868] - Log out user: bamboo
+[2021-12-09 06:59:42,885][user.py-115][WARNING][8840] - Login failed: Invalid username!
+[2021-12-09 07:00:52,081][user.py-105][INFO][10788] - Successfully login: bamboo
+[2021-12-09 07:01:39,162][note.py-70][INFO][20712] - Add note successfully!: bamboo for Buddy
+[2021-12-09 07:07:23,266][user.py-137][INFO][22796] - Log out user: bamboo
+[2021-12-09 07:09:34,926][user.py-105][INFO][7272] - Successfully login: bamboo
